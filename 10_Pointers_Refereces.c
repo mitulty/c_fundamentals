@@ -170,6 +170,17 @@ char *month_name(int n)
              ? name[0]
              : name[n];
 }
+
+int **malloc2dIntArray(int row, int col)
+{
+  int **malloced2darray = (int **)malloc(row * sizeof(int *));
+  for (int i = 0; i < row; i++)
+  {
+    malloced2darray[i] = (int *)malloc(col * sizeof(int));
+  }
+  return malloced2darray;
+}
+
 int main(int argc, char const *argv[])
 {
   geeks();
