@@ -2,7 +2,6 @@
  * @Author: Mitul Tyagi
  * @Date:   2024-07-19 00:20:56
  * @Description: Memory Functions in libc
- * @Last Modified time: 2024-07-19 00:40:49
  */
 /*
 - The functions memcmp, memcpy, memmove and memset are vital for our system and are used throughout the standard libaries (e.g. calloc, realloc). These

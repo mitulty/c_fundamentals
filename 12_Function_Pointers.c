@@ -2,7 +2,6 @@
  * @Author: Mitul Tyagi
  * @Date:   2024-07-15 18:10:27
  * @Description: Function Pointer
- * @Last Modified time: 2024-07-18 23:35:42
  */
 /*
 - Function pointers are a pointer that points to a memory region which has codes. They point to instructions.

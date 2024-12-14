@@ -2,14 +2,13 @@
   @Author: Mitul Tyagi
   @Date:   2023-10-16 23:33:38
   @Description: Types in C
-  @Last Modified time: 2024-07-12 19:02:55
 */
 /*
 - The type of an object determines the set of values it can have and what operations can be performed on it.
 - These can be classified as: Primitive Data Types, User-Defined Data Types and Derived Data Types.
 - Primitive Data Types: These data types are built-in or predefined data types and can be used directly by the user to declare variables. Example: int, char,
   float, double and void.
-- Derived Data Types: These are derived from the primitive or built-in datatypes are referred to as Derived Data Types.Example: Array, Pointer, Reference and 
+- Derived Data Types: These are derived from the primitive or built-in datatypes are referred to as Derived Data Types.Example: Array, Pointer, Reference and
   Function.
 - User-Defined Data Types: These are defined by the user itself. Example: Structure, Union, Enumeration and Typedef.
 - The primitive data types in C are:
@@ -18,13 +17,13 @@
         -> float: single-precision floating point
         -> double: double-precision floating point
         -> void: used to specify that no value is present. It does not provide a result value to its caller. It has no values and no operations. It is used to
-                 represent nothing.Void is used in multiple ways as function return type, function arguments as void, and pointers to void. No object has a 
+                 represent nothing.Void is used in multiple ways as function return type, function arguments as void, and pointers to void. No object has a
                  type void.
 - There are a number of qualifiers that can be applied to these basic types.
 - Printable characters are always positive.
 - The long, short, signed and unsigned are datatype modifier that can be used with some primitive data types to change the size or length of the datatype.
 - The qualifiers singed or unsigned may be applied to char or any integer.
-- The size of the data types in C is dependent on the size of the architecture, so the universal size of the data types can not be defined. For that, the 
+- The size of the data types in C is dependent on the size of the architecture, so the universal size of the data types can not be defined. For that, the
   C language provides the sizeof() operator to check the size of the data types.
 ----------------------|--------------|-----------------------------------|--------------------------
 Data Type             |  Size(bytes) |   Range                           |    Format Specifier
@@ -55,31 +54,31 @@ double                |  8           |   1.7E-308 to 1.7E+308	           |    %l
 ----------------------|--------------|-----------------------------------|--------------------------
 long double           |  16          |   3.4E-4932 to 1.1E+4932	         |    %Lf/%LF
 ----------------------|--------------|-----------------------------------|--------------------------
-- Literals are tokens that denotes a fixed value, which may be an integar, a floating-point number, a character, or a string. It's type is determined by its 
+- Literals are tokens that denotes a fixed value, which may be an integar, a floating-point number, a character, or a string. It's type is determined by its
   value and its notation.
-- A character literal is an integer literal, written as one character within single quotes. It's value is the numeric value of the character in the machine's 
-  character set. Certain characters can be represented in character and string literals by escape sequences. An arbitrary byte-sized bit pattern can be 
+- A character literal is an integer literal, written as one character within single quotes. It's value is the numeric value of the character in the machine's
+  character set. Certain characters can be represented in character and string literals by escape sequences. An arbitrary byte-sized bit pattern can be
   specified by '\ooo' where "ooo" is one to three octal digits(0....7) or by '\xhh' where "hh" is one or more hexadecimal digits(0...9,a...f,A...F).
 - The character literal '\0' represents the character with value zero, the null character.
-- An integer literal is of type int. A long literal is written with a terminal "l". Unsigned literals are written with a terminal "u" or "U", and the suffix 
+- An integer literal is of type int. A long literal is written with a terminal "l". Unsigned literals are written with a terminal "u" or "U", and the suffix
   "ul" or "UL" indicates unsigned long.
 - The value of an integer literals can be specified in octal or hexadecimal instead of decimal. A leading 0(zero) on an integer literals means octal, a leading
   0x or 0X means hexadecimal. They may also be followed by "L" and "U".
-- Floating-point constants contain a decimal point or an exponent. Their type is double, unless suffixed with "f" or "F" for float and "l" or "L" for long 
+- Floating-point constants contain a decimal point or an exponent. Their type is double, unless suffixed with "f" or "F" for float and "l" or "L" for long
   double.
 - A constant expression involves only constants and can be evaluated during the compilation rather than run-time.
-- A string literal or string constant is a sequence of zero or more characters enclosed by double quotes. They can be concatenated at compile time. The 
+- A string literal or string constant is a sequence of zero or more characters enclosed by double quotes. They can be concatenated at compile time. The
   internal representation of a string has a null character '\0' at the end.
-- The enumeration constant is a list of integer literals. The first name has a value 0, the next 1, and so on, unless explicit values are specified. If not 
+- The enumeration constant is a list of integer literals. The first name has a value 0, the next 1, and so on, unless explicit values are specified. If not
   all values are specified, unspecified values continue the progression from the last specified value. Names in different enumerations must be distinct. Values
   need not be distinct in the same enumeration.
 - An enumeration is a better alternative compared to #define.
 - An object is a data recognized by a name which has an address in memory.
 - An “l-value” refers to memory location which identifies an object. l-value may appear as either left hand or right hand side of an assignment operator(=).
-  l-value often represents an identifier. Expressions referring to modifiable locations are called “modifiable l-values“. A modifiable l-value cannot have an 
-  array type, an incomplete type, or a type with the const attribute. For structures and unions to be modifiable lvalues, they must not have any members with 
-  the const attribute. The name of the identifier denotes a storage location, while the value of the variable is the value stored at that location. An 
-  identifier is a modifiable lvalue if it refers to a memory location and if its type is arithmetic, structure, union or pointer. For example, if ptr is a 
+  l-value often represents an identifier. Expressions referring to modifiable locations are called “modifiable l-values“. A modifiable l-value cannot have an
+  array type, an incomplete type, or a type with the const attribute. For structures and unions to be modifiable lvalues, they must not have any members with
+  the const attribute. The name of the identifier denotes a storage location, while the value of the variable is the value stored at that location. An
+  identifier is a modifiable lvalue if it refers to a memory location and if its type is arithmetic, structure, union or pointer. For example, if ptr is a
   pointer to a storage region, then *ptr is a modifiable l-value that designates the storage region to which ptr points.
   In C, the concept was renamed as “locator value”, and referred to expressions that locate (designate) objects. The l-value is one of the following:
               --> The name of the variable of any type i.e. , an identifier of integral, floating, pointer, structure, or union type.
@@ -89,15 +88,15 @@ long double           |  16          |   3.4E-4932 to 1.1E+4932	         |    %L
               --> A const object (a nonmodifiable l-value).
               --> The result of indirection through a pointer, provided that it isn’t a function pointer.
               --> The result of member access through pointer(-> or .)
-- An "r-value" simply means, an object that has no identifiable location in memory (i.e. having an address). "r-value" refers to data value that is stored at 
+- An "r-value" simply means, an object that has no identifiable location in memory (i.e. having an address). "r-value" refers to data value that is stored at
   some address in memory. An r-value is an expression, that can’t have a value assigned to it, which means the r-value can appear on right but not on left hand
   side of an assignment operator(=).
-- The unary & (address-of) operator requires an l-value as its operand. That is, &n is a valid expression only if n is an l-value. Thus, an expression such as 
+- The unary & (address-of) operator requires an l-value as its operand. That is, &n is a valid expression only if n is an l-value. Thus, an expression such as
   &12 is an error. Again, 12 does not refer to an object, so it’s not addressable. All l-values are r-values but not all r-values are l-values.
 - Structures are l-values.
 - An array can be an lvalue (but not a modifiable lvalue), and an "array name" (identifier) is always an lvalue.
 - An array is not an lvalue, except when it is the operand of the sizeof operator, the _Alignof operator, or the unary & operator, or is a string literal used
-  to initialize an array. An expression that has type "array of type" is converted to an expression with type "pointer to type" that points to the initial 
+  to initialize an array. An expression that has type "array of type" is converted to an expression with type "pointer to type" that points to the initial
   element of the array object and is not an lvalue.
       int x[10];
       int i = 0;

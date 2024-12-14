@@ -2,7 +2,6 @@
  * @Author: Mitul Tyagi
  * @Date:   2024-07-18 21:10:00
  * @Description: Attributes in C
- * @Last Modified time: 2024-07-18 23:34:31
  */
 /*
 - GCC provides a rich set of function, variable, and type attributes that allow developers to specify various properties and behaviors beyond what's available
@@ -136,7 +135,7 @@ extern int old_var;
 int new_fn() { return old_var; }
 struct foo
 {
-    int x[2] __attribute__((aligned(8)));
+  int x[2] __attribute__((aligned(8)));
 };
 int a __attribute__((section("DUART_A"))) = 0;
 int b __attribute__((section("DUART_B"))) = 0;
@@ -144,8 +143,8 @@ char stack[10000] __attribute__((section("STACK"))) = {0};
 int init_data __attribute__((section("INITDATA")));
 struct bar
 {
-    char a;
-    int x[2] __attribute__((packed));
+  char a;
+  int x[2] __attribute__((packed));
 };
 __attribute__((user("foo"))) int f();
 int __attribute__((user("foo"))) g();
@@ -157,34 +156,34 @@ int o __attribute__((user("foo")));
 void fatal() __attribute__((noreturn));
 void fatal()
 {
-    exit(1);
+  exit(1);
 }
 struct __attribute__((aligned)) S
 {
-    short f[3];
+  short f[3];
 };
 
 struct __attribute__((aligned(8))) T
 {
-    short f[3];
+  short f[3];
 };
 typedef int more_aligned_int __attribute__((aligned(8)));
 
 struct my_unpacked_struct
 {
-    char c;
-    int i;
+  char c;
+  int i;
 };
 
 struct __attribute__((__packed__)) my_packed_struct
 {
-    char c;
-    int i;
-    struct my_unpacked_struct s;
+  char c;
+  int i;
+  struct my_unpacked_struct s;
 };
 
 int main(int argc, char const *argv[])
 {
-    /* Initialize stack pointer */
-    init_sp(stack + sizeof(stack));
+  /* Initialize stack pointer */
+  init_sp(stack + sizeof(stack));
 }

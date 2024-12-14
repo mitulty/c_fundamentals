@@ -2,13 +2,12 @@
   @Author: Mitul Tyagi
   @Date:   2023-11-03 23:36:08
   @Description: Structures, Unions and Enumerations
-  @Last Modified time: 2024-07-15 23:10:08
 */
 /*
 - A structure is a collection of one or more variables, possibly of different types, grouped together under a single name for convenient handling. The keyword
   struct introduces a structure declaration, which is a list of declarations enclosed in braces. An optional name called a structure tag may follow the word
   struct. The tag names this kind of structure, and can be used subsequently as a shorthand for the part of the declaration in braces. The variables named in a
-  structure are called members. A struct declaration defines a type. The right brace that ends the list of members my be followed by a list of variables.
+  structure are called members. A struct declaration defines a type. The right brace that ends the list of members may be followed by a list of variables.
             struct {..........} x,y,z;
 - A structure declaration that is not followed by a list of variables reserves no storage; it merely describes a template or the shape of a structure. If the
   declaration is tagged, however, the tag can be used later in definitions of instances of the structure. A structure can be intialized by following its
@@ -111,7 +110,7 @@ struct str3
 };
 
 // defining new name for str3
-typedef struct str3 str3;
+typedef struct str3 strthree;
 
 // another way of using typedef with structures
 typedef struct str4
@@ -197,7 +196,7 @@ int main(int argc, char const *argv[])
   printf("Struct 2:\n\ti = %d, c = %c, f = %f, s = %s\n", var2.i, var2.c, var2.f, var2.s);
   printf("Struct 3\n\ti = %d, c = %c, f = %f\n", var3.ii, var3.cc, var3.ff);
   // creating structure variables using new names
-  str3 var4 = {20};
+  strthree var4 = {20};
   str4 var5 = {314};
 
   printf("var4.a = %d\n", var4.a);

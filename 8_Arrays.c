@@ -2,13 +2,12 @@
   @Author: Mitul Tyagi
   @Date:   2023-11-03 21:02:05
   @Description: Arrays
-  @Last Modified time: 2024-07-12 19:58:30
 */
 /*
-- Array in C is one of the most used data structures in C programming. It is a simple and fast way of storing multiple values under a single name. An array in 
+- Array in C is one of the most used data structures in C programming. It is a simple and fast way of storing multiple values under a single name. An array in
   C is a fixed-size collection of similar data items stored in contiguous memory locations. It can be used to store the collection of primitive data types such
   as int, char, float, etc., and also derived and user-defined data types such as pointers, structures, etc.
-- An array can be declared by specifying its name, the type of its elements, and the size of its dimensions. The compiler allocates the memory block of the 
+- An array can be declared by specifying its name, the type of its elements, and the size of its dimensions. The compiler allocates the memory block of the
   specified size to the array name.
                                     data_type array_name [size];
 - The C arrays are static in nature, i.e., they are allocated memory at the compile time.
@@ -17,10 +16,10 @@
     - Array Initialization with Declaration: An initializer list is used to initialize elements of the array. An initializer list is the list of values enclosed
                                              within braces {} separated by comma
                                     data_type array_name [size] = {val1, val2, val3, ....., valN};
-    - Array Initialization with Declaration without Size: The size of the array can be skipped when initializing using the initializer list. The compiler 
+    - Array Initialization with Declaration without Size: The size of the array can be skipped when initializing using the initializer list. The compiler
                                                           automatically deduces the size.
                                     data_type array_name [] = {val1, val2, val3, ....., valN};
-    - Array Initialization after Declaration (Using Loops): The initialization is done after the declaration by assigning the initial value to each element 
+    - Array Initialization after Declaration (Using Loops): The initialization is done after the declaration by assigning the initial value to each element
                                                             individually. Loops can be used.
 - Any array element can be accessed in C using the array subscript operator [] and the index value i of the element.
                                     array_name[index];
@@ -35,7 +34,7 @@
     - One Dimensional Array: The One-dimensional arrays, also known as 1-D arrays in C are those arrays that have only one dimension.
     - Multidimensional Array: Multi-dimensional Arrays in C are those arrays that have more than one dimension. Some of the popular multidimensional arrays are
                               2D arrays and 3D arrays.
-- A Two-Dimensional array or 2D array in C is an array that has exactly two dimensions. They can be visualized in the form of rows and columns organized in a 
+- A Two-Dimensional array or 2D array in C is an array that has exactly two dimensions. They can be visualized in the form of rows and columns organized in a
   two-dimensional plane.
                                     array_name[size1][size2]
 - A 3D array has exactly three dimensions. It can be visualized as a collection of 2D arrays stacked on top of each other to create the third dimension.
@@ -46,15 +45,15 @@
 - Properties of Arrays in C:
     1. Fixed Size: The array in C is a fixed-size collection of elements. The size of the array must be known at the compile time and it cannot be changed once
        it is declared.
-    2. Homogeneous Collection: Only one type of element is stored in an array. There is no restriction on the number of elements but the type of all of these 
+    2. Homogeneous Collection: Only one type of element is stored in an array. There is no restriction on the number of elements but the type of all of these
        elements must be the same.
-    3. Indexing in Array: The array index always starts with 0 in C language. It means that the index of the first element of the array will be 0 and the last 
+    3. Indexing in Array: The array index always starts with 0 in C language. It means that the index of the first element of the array will be 0 and the last
        element will be N – 1.
     4. Dimensions of an Array: A dimension of an array is the number of indexes required to refer to an element in the array. It is the number of directions in
        which you can grow the array size.
-    5. Contiguous Storage: All the elements in the array are stored continuously one after another in the memory. It is one of the defining properties of the 
+    5. Contiguous Storage: All the elements in the array are stored continuously one after another in the memory. It is one of the defining properties of the
        array in C which is also the reason why random access is possible in the array.
-    6. Random Access: The array in C provides random access to its element i.e an access to a random element can be made at any index of the array in constant 
+    6. Random Access: The array in C provides random access to its element i.e an access to a random element can be made at any index of the array in constant
        time complexity just by using its index number.
     7. No Index Out of Bounds Checking: There is no index out-of-bounds checking in C/C++.
 - Advantages of Array in C
@@ -181,24 +180,24 @@ int main(int argc, char const *argv[])
 Element at arr[2]: 30
 Element at arr[4]: 50
 Element at arr[0]: 10
-Elements in Array: 10 20 100 40 50 
-Character Array: 
+Elements in Array: 10 20 100 40 50
+Character Array:
 Geeks
 Size of Array in main(): 20
 Size of Array in Functions: 8
-Array Elements: 10 20 100 40 50 
-Array Elements: 1 2 3 4 5 
+Array Elements: 10 20 100 40 50
+Array Elements: 1 2 3 4 5
 2D Array:
-10 20 30 
-40 50 60 
+10 20 30
+40 50 60
 
 3D Array:
-10 20 
-30 40 
+10 20
+30 40
 
- 
-50 60 
-70 80 
+
+50 60
+70 80
 
 
 */

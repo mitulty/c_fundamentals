@@ -2,7 +2,6 @@
  * @Author: Mitul Tyagi
  * @Date:   2024-07-18 23:15:05
  * @Description: Callback Functions
- * @Last Modified time: 2024-07-18 23:53:25
  */
 /*
 - A callback function is a function that is passed to another function as an argument. There are two types of callback functions: Synchronous which are

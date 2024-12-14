@@ -2,7 +2,6 @@
   @Author: Mitul Tyagi
   @Date:   2023-10-28 16:18:02
   @Description: Play with variables
-  @Last Modified time: 2024-07-01 22:27:40
 */
 
 /*
@@ -10,19 +9,19 @@
         -> const: The const type qualifier is used to create constant variables. The value of a constant variable cannot be changed.
         -> volatile: The volatile type qualifier is used to create variables whose values can be changed by external devices or hardware.
         -> restrict: The restrict type qualifier is used to restrict the way that a pointer can be used.
-        ->_Atomic: The _Atomic type qualifier is used to indicate that a variable is atomic. This means that the value of the variable cannot be changed by 
+        ->_Atomic: The _Atomic type qualifier is used to indicate that a variable is atomic. This means that the value of the variable cannot be changed by
                    multiple threads at the same time.
 - Const: The qualifier const can be applied to the declaration of any variable to specify that its value will not be changed (which depends upon where const
-         variables are stored, we may change the value of the const variable by using a pointer). The result is implementation-defined if an attempt is made 
-         to change a const. In C programming, the const qualifier can be used in different contexts to provide various behaviors. Here are some different use 
+         variables are stored, we may change the value of the const variable by using a pointer). The result is implementation-defined if an attempt is made
+         to change a const. In C programming, the const qualifier can be used in different contexts to provide various behaviors. Here are some different use
          cases of the const qualifier in C:
         -> Constant Variables: The value of this variable cannot be modified once it is initialized.
-        -> Pointer to Constant: We can change the pointer to point to any other integer variable, but cannot change the value of the object (entity) pointed 
+        -> Pointer to Constant: We can change the pointer to point to any other integer variable, but cannot change the value of the object (entity) pointed
            using pointer ptr.
-        -> Constant Pointer to Variable: We can change the value of the object pointed by the pointer, but cannot change the pointer to point to another 
+        -> Constant Pointer to Variable: We can change the value of the object pointed by the pointer, but cannot change the pointer to point to another
             variable.
         -> Constant Pointer to Constant: We cannot change the value pointed by the pointer as well as we cannot point the pointer to other variables.
-- Volatile: The volatile type qualifier is used to create variables whose values can't be changed in the program explicitly but can be changed by any external 
+- Volatile: The volatile type qualifier is used to create variables whose values can't be changed in the program explicitly but can be changed by any external
             device or hardware. It is typically used for variables that can be accessed by interrupt service routines, hardware, and updated by several threads
             or processes. The volatile qualifier informs the compiler that any reads or writes to the variable should not be optimized away since the variable's
             value might change without the program's permission. When a variable is declared  as volatile, the compiler generates code that ensures that every
@@ -32,9 +31,9 @@
             restrict keyword is mainly used in pointer declarations as a type qualifier for pointers. It doesn’t add any new functionality. It is only a way
             for the programmer to inform about an optimization that the compiler can make.
 - In C, data type modifiers are used to modify the length or size of data that various data types hold such as int, char, and double as per the requirements.
-  By using these data type modifiers we can precisely utilize the computer memory. In C, there are 4 data type modifiers that are used to modify data types. 
+  By using these data type modifiers we can precisely utilize the computer memory. In C, there are 4 data type modifiers that are used to modify data types.
   They are used as prefixed to the basic data types. These are: int, long, signed and unsigned.
-- C Storage Classes are used to describe the features of a variable/function. These features basically include the scope, visibility, and lifetime which help 
+- C Storage Classes are used to describe the features of a variable/function. These features basically include the scope, visibility, and lifetime which help
   us to trace the existence of a particular variable/function during the runtime of a program. These are: auto, static, extern and register.
 
 */

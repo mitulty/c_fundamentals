@@ -2,7 +2,6 @@
   @Author: Mitul Tyagi
   @Date:   2023-11-04 23:09:11
   @Description: Pointers and References
-  @Last Modified time: 2024-07-15 17:55:47
 */
 /*
 - A pointer is a varaible that contains the address of a variable. It is a group of cells that can hold an address. A pointer can be used to store the memory
@@ -12,16 +11,16 @@
   stored in that memory location using pointers.
 - As the pointers in C store the memory addresses, their size is independent of the type of data they are pointing to. The size of pointers in C only depends
   on the system architecture.
-- The declaration of a pointer is done using the dereference operator "*"". The pointers that are not initialised point to random memory address and are called
+- The declaration of a pointer is done using the dereference operator "*". The pointers that are not initialized, point to random memory address and are called
   wild pointers.
                                 datatype *ptr;
 - The pointer is initialized with the addressof operator "&" to get the memory address of a variable and then store it in the pointer variable. The unary
-  operator & gives the address of an object. It only applies to objects in memory: variables and array elements. It can not be applied to expressions, constant,
+  operator & gives the address of an object. It only applies to objects in memory: variables and array elements. It can not be applied to expressions, constants,
   or register variables.
-- The unary operator * is the indirection or dereferencing operator; when applied to a pointer, it accesses the objecct the pointer points to. Dereferencing a
+- The unary operator * is the indirection or dereferencing operator; when applied to a pointer, it accesses the object the pointer points to. Dereferencing a
   pointer is the process of accessing the value stored in the memory address specified in the pointer.
 - If p is a pointer to some element of an array, then p++ increments p to point to the next element, and p+=i increments it to point i elements beyond where it
-  currently does.
+  currently is.
 - Pointers and integers are not interchangeable. Zero is the sole exception. The constant zero may be assigned to a pointer, and a pointer may be compared with
   constant zero. The symbolic constant NULL is often used in place of zero.
 - %p or %ls can be used as specifiers for the value of a pointer (an address).
@@ -30,12 +29,12 @@
   are assignment of pointers of the same type, adding or subtracting a pointer and an integer, subtracting or comparing two pointers to members of the same
   array, and assigning or comparing to zero. All other pointer arithemtics are illegal.
 - A string literal or a character array is accessed using a character pointer. A string constant is accessed by a pointer to its first element.
-- Pointers and Array are closely related to each other. Even an array name is a pointer to its first element. It is also known as Pointer to Array.
+- Pointers and Array are closely related to each other. Even an array name is a pointer to its first element. It is also known as Pointer to an Array.
   A pointer to an array can be created using the following syntax:
                                   datatype array_name[] = {}; datatype *ptr_val = array_name;
 - Any operation that can be achieved by array subscripting can also be done with pointers. If pa is pointer to an array then (pa+i) is the address of a[i] and
   *(pa+i) is the contents of a[i]. The name of an array is a synonym for the location of the first element. Thus pa = &a[0] is equivalent to pa = a.
-- A reference to a[i] can also be written as *(a+i). Also &a[i] and (a+i) are also identical. An array-and-index expression is equivalent to one written as a
+- A reference to a[i] can also be written as *(a+i). Also &a[i] and (a+i) are identical. An array-and-index expression is equivalent to one written as a
   pointer and offset. A pointer is a variable, so pa = a and pa++ are legal. But an array name is not a variable; constructions like a = pa and a++ are illegal.
 - When an array name is passed to a function, what is passed is the location of the initial element. Within the called function, this argument is a local
   variable, and so an array name parameter is a pointer, that is, a variable containing an address. As formal parameters in a function definition, char s[] and
@@ -43,8 +42,9 @@
   pointer, and manipulate it accordingly. It is possible to pass part of an array to a function, by passing a pointer to the beginning of the subarray.
 - Since pointers are variables themselves, they can be stored in arrays just as other variables can. Most frequent use of arrays of pointers is to store
   character strings of diverse lengths.
-- If a two dimensional array is to be passed to a function, the parameter declaration in the functionmust include the number of columns; the number of rows is
-  not relevant, since what is passed is a pointer to an array of rows. Only the first dimension of an array is free; all others have to be specified.
+- If a two dimensional array is to be passed to a function, the parameter declaration in the function must include the number of columns; the number of rows is
+  not relevant, since what is passed is a pointer to an array of rows. Only the first dimension of an array is free; all others have to be specified in case  of
+  multidimensional arrays.
 - The pointer pointing to the structure type is called struture pointer or pointer to structure.
                         struct struct_name *ptr_name.
 - In C language, a pointer can be defined that stores the memory address of another pointer. Such pointers are called double-pointers or pointers-to-pointer.
@@ -64,7 +64,7 @@
   memory address.
                         data_type * const pointer_name;
 - The pointers pointing to a constant value that cannot be modified are called pointers to a constant. Here the data can be only accessed pointed by the
-  pointer, but cannot modify it. Although, the address stored in the pointer to constant can be changed.
+  pointer, but cannot modify it. Although, the address stored in the pointer to a constant can be changed.
                         const data_type * pointer_name;
 - Far pointer: A far pointer is typically 32-bit that can access memory outside the current segment.
 - Dangling pointer: A pointer pointing to a memory location that has been deleted (or freed) is called a dangling pointer.
@@ -82,6 +82,14 @@
   is used to access the actual argument used in the call. It means the changes made to the parameter affect the passed argument.
 - The address operator returns a pointer to the type of the operand.
 - Function pointers are a pointer that points to a memory region which has codes. They point to instructions.
+- An array name is always a pointer to the first element of the array. For int arr[4], arr is a pointer to the first integer. This is equivalent to &arr[0]. But &arr
+  is a pointer to an array of 4 intergers. For matrix[4][6], matrix is a pointer to an array of 6 integers. This is equivalent to &matrix[0]. But &matrix is a pointer
+  to an array of 24 integers. Also matrix[3] is a pointer to the first integer of the 4th array whereas &matrix[3] is a pointer to an array of 4 integers pointing to
+  the 4th array.
+- The * operator takes to the inner level in the chain while & operator takes to the outer level. The golden rule is
+          -> a[i]  = *(a + i)
+          -> &a[i] = (a + i)
+          -> a[i][j][k] = *(*(*(a + i) + j) + k)
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -191,7 +199,8 @@ int main(int argc, char const *argv[])
   *ip = 0;        // x is now 0
   *ip = *ip + 10; // incremenets x by 10
   ip = &z[0];     // ip now points to z[0]. Here &z[0] gives a pointer to the first element of the z array.
-  ip = &zf[0];    // ip now points to zf[0], warning: assignment to ‘int *’ from incompatible pointer type ‘float *’
+  // ip = &zf[0];    // ip now points to zf[0], warning: assignment to ‘int *’ from incompatible pointer type ‘float *’
+  ip = (int *)&zf[0]; // ip now points to zf[0]
   printf("Element Value as integer: %d\n", *ip);
   printf("Element Value as float: %d\n", *ip);
 
@@ -222,7 +231,7 @@ int main(int argc, char const *argv[])
     int *p = arr;  // Name of an array is a pointer to the first element of the array.
     int *q = &arr; // warning: initialization of ‘int *’ from incompatible pointer type ‘int (*)[5]’
     int *r = (int *)&arr;
-    int *s = &arr + 1;
+    int *s = (int *)(&arr + 1);
     printf("arr[0]:%d, *p:%d, *q:%d, *r:%d, *s:%d\n", arr[0], *p, *q, *r, *s); // warning: initialization of ‘int *’ from incompatible pointer type ‘int (*)[5]’
     printf("&arr[0]:%p, p:%p, q:%p, r:%p, s:%p\n", &arr[0], p, q, r, s);       // warning: initialization of ‘int *’ from incompatible pointer type ‘int (*)[5]’
     *arr = 100;
@@ -314,7 +323,8 @@ int main(int argc, char const *argv[])
         "ankit",
         "akhil"}; // Name is an array of character pointers and not a pointer to a character array.
     char(*new_name)[6] = names[0];
-    // char(*new_name)[6] = {"amiit", "amaar", "ankit", "akhil"}; // New_Name is pointer to an array of character. initialization of ‘char (*)[]’ from incompatible pointer type ‘char *’
+    // char(*new_name)[6] = {"amiit", "amaar", "ankit", "akhil"}; // New_Name is pointer to an array of character. initialization of ‘char (*)[]’ from incompatible
+    // pointer type ‘char *’
     char **c_array = {
         "amit",
         "amar",
@@ -335,8 +345,78 @@ int main(int argc, char const *argv[])
     // printf("%s\n", str);
   }
   {
-    int *p = (int *)NULL;
-    printf("p:%p and *p:%d", p, *p); // Segmentation Fault
+    // int *p = (int *)NULL;
+    // printf("p:%p and *p:%d", p, *p); // Segmentation Fault
+  }
+  {
+    int arr[5] = {9};
+    for (int i = 0; i < 5; i++)
+      printf("%d \t", arr[i]);
+
+    printf("\n\n");
+
+    printf("    arr = %p\n", arr);
+    printf("arr + 1 = %p\n", arr + 1);
+    printf("\n    &arr = %p\n", &arr);
+    printf("  &arr + 1 = %p\n", &arr + 1);
+    printf("\n  &arr[0] = %p\n", &arr[0]);
+    printf("&arr[0] + 1 = %p\n", &arr[0] + 1);
+    printf("\n");
+
+    int *r = &arr; //  warning: initialization of ‘int *’ from incompatible pointer type ‘int (*)[5]’ [-Wincompatible-pointer-types]
+    int *s = (int *)&arr;
+    printf("(r, r + 1) = %p, %p\n", r, r + 1);
+    printf("(s, S + 1) = %p, %p\n", s, s + 1);
+
+    int(*t)[5] = &arr;
+    printf("(t, t + 1) = %p, %p\n", t, t + 1);
+    printf("*t,**t : %p,%d\n", *t, **t);
+
+    int **u = &arr; // warning: initialization of ‘int **’ from incompatible pointer type ‘int (*)[5]’ [-Wincompatible-pointer-types]
+    printf("(u, u + 1) = %p, %p\n", u, u + 1);
+  }
+  {
+
+    int matrix[3][2] = {
+        {4, 5},
+        {7, 8},
+        {3, 8}};
+
+    printf("\n");
+
+    for (int i = 0; i < 3; i++)
+    {
+      for (int j = 0; j < 2; j++)
+        printf("%d ", matrix[i][j]);
+      printf("\n");
+    }
+    printf("    matrix = %p\n", matrix);
+    printf("matrix + 1 = %p\n", matrix + 1);
+
+    printf("\n    &matrix = %p\n", &matrix);
+    printf("  &matrix + 1 = %p\n", &matrix + 1);
+
+    printf("\n  &matrix[0] = %p\n", &matrix[0]);
+    printf("&matrix[0] + 1 = %p\n", &matrix[0] + 1);
+
+    printf("\n  matrix[0] = %p\n", matrix[0]);
+    printf("matrix[0] + 1 = %p\n", matrix[0] + 1);
+
+    printf("\n  matrix[3] = %p\n", matrix[3]);
+    printf("matrix[3] + 1 = %p\n", matrix[3] + 1);
+
+    printf("\n  &matrix[0][0] = %p\n", &matrix[0][0]);
+    printf("&matrix[0][0] + 1 = %p\n", &matrix[0][0] + 1);
+
+    printf("*matrix = %p\n", *matrix);
+    printf("**matrix = %d\n", **matrix);
+
+    printf("&*matrix = %p\n", &*matrix);
+    printf("&**matrix = %p\n", &**matrix);
+
+    printf("*&matrix = %p\n", *&matrix);
+    printf("*&*matrix = %p\n", *&*matrix);
+    printf("\n");
   }
   return 0;
 }
