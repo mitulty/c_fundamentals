@@ -27,6 +27,7 @@ Node *create_node(int data)
     totalElements++;
     return temp;
 }
+
 void traverse_linked_list_forward(void)
 {
     Node *temp = head;
@@ -40,6 +41,7 @@ void traverse_linked_list_forward(void)
     printf(" Null\n");
     return;
 }
+
 void traverse_linked_list_forward_recursion(Node *node)
 {
     forwardCount++;
@@ -54,6 +56,7 @@ void traverse_linked_list_forward_recursion(Node *node)
     traverse_linked_list_forward_recursion(node->next);
     return;
 }
+
 void traverse_linked_list_backward(Node *node)
 {
     reverseCount++;
@@ -68,6 +71,7 @@ void traverse_linked_list_backward(Node *node)
     printf(" <-- (%d,%d)", node->data, reverseCount);
     return;
 }
+
 void insert_node_at_beginning(int data)
 {
     printf("----------------------------------\n");
@@ -82,6 +86,7 @@ void insert_node_at_beginning(int data)
     head = node;
     return;
 }
+
 void insert_node_at_end(int data)
 {
     printf("----------------------------------\n");
@@ -98,6 +103,7 @@ void insert_node_at_end(int data)
     temp->next = node;
     return;
 }
+
 void insert_node_at_position(int data, int pos)
 {
     printf("----------------------------------\n");
@@ -128,6 +134,7 @@ void insert_node_at_position(int data, int pos)
     temp->next = new;
     return;
 }
+
 void delete_node_at_beginning(void)
 {
     printf("----------------------------------\n");
@@ -140,6 +147,7 @@ void delete_node_at_beginning(void)
     totalElements--;
     return;
 }
+
 void delete_node_at_end(void)
 {
     printf("----------------------------------\n");
@@ -161,6 +169,7 @@ void delete_node_at_end(void)
     totalElements--;
     return;
 }
+
 void delete_at_position(int pos)
 {
     printf("----------------------------------\n");
@@ -193,6 +202,7 @@ void delete_at_position(int pos)
     totalElements--;
     return;
 }
+
 void reverse_linked_list(void)
 {
     if (head->next == NULL || head == NULL)
@@ -215,6 +225,7 @@ void reverse_linked_list(void)
     traverse_linked_list_forward_recursion(head);
     return;
 }
+
 void reverse_linked_list_recursion(Node *node)
 {
     if (node == NULL)
@@ -228,6 +239,22 @@ void reverse_linked_list_recursion(Node *node)
     Node *temp = node->next;
     temp->next = node;
     node->next = NULL;
+    return;
+}
+
+void getmiddleNode(Node *head)
+{
+    Node *slow_p = head, *fast_p = head;
+
+    int index = 1;
+
+    while (fast_p && fast_p->next)
+    {
+        index++;
+        slow_p = slow_p->next;
+        fast_p = fast_p->next->next;
+    }
+    printf("Middle Node: %d at index %d\n", slow_p->data, index);
     return;
 }
 int main(int argc, char const *argv[])
@@ -280,6 +307,7 @@ int main(int argc, char const *argv[])
     reverse_linked_list();
     reverse_linked_list_recursion(head);
     traverse_linked_list_forward();
+    getmiddleNode(head);
     return 0;
 }
 /*
