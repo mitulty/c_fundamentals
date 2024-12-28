@@ -70,6 +70,7 @@ void traverse_linked_list_backward(Node *node)
 }
 void insert_node_at_beginning(int data)
 {
+    printf("----------------------------------\n");
     printf("Inserting %d at beginning\n", data);
     Node *node = create_node(data);
     if ((head == NULL))
@@ -83,6 +84,7 @@ void insert_node_at_beginning(int data)
 }
 void insert_node_at_end(int data)
 {
+    printf("----------------------------------\n");
     printf("Inserting %d at end\n", data);
     Node *node = create_node(data);
     if ((head == NULL))
@@ -98,8 +100,8 @@ void insert_node_at_end(int data)
 }
 void insert_node_at_position(int data, int pos)
 {
-    // printf("Pos = %d and TotalElements = %d\n",pos,totalElements);
-    printf("Inserting %d at position: %d\n", data, pos);
+    printf("----------------------------------\n");
+    printf("Inserting %d at index %d\n", data, pos);
     if (pos > totalElements + 2)
     {
         printf("Error!!!.....\nPosition more than the number of elements.\n");
@@ -128,6 +130,7 @@ void insert_node_at_position(int data, int pos)
 }
 void delete_node_at_beginning(void)
 {
+    printf("----------------------------------\n");
     printf("Deleting at beginning\n");
     if (head == NULL)
         return;
@@ -139,7 +142,8 @@ void delete_node_at_beginning(void)
 }
 void delete_node_at_end(void)
 {
-    printf("Deleting at end\n");
+    printf("----------------------------------\n");
+    printf("Deleting at beginning\n");
     if (head == NULL)
         return;
     Node *temp = head;
@@ -159,8 +163,8 @@ void delete_node_at_end(void)
 }
 void delete_at_position(int pos)
 {
+    printf("----------------------------------\n");
     printf("Deleting at position: %d\n", pos);
-    // MTprintf("Pos = %d and TotalElements = %d\n",pos,totalElements);
     if (pos > totalElements)
     {
         printf("Error!!!.....\nPosition more than the number of elements.\n");
@@ -213,7 +217,7 @@ void reverse_linked_list(void)
 }
 void reverse_linked_list_recursion(Node *node)
 {
-    if (head->next == NULL || head == NULL)
+    if (node == NULL)
         return;
     if (node->next == NULL)
     {
@@ -228,8 +232,8 @@ void reverse_linked_list_recursion(Node *node)
 }
 int main(int argc, char const *argv[])
 {
-    /* code */
     insert_node_at_beginning(5);
+    traverse_linked_list_forward();
     delete_node_at_beginning();
     traverse_linked_list_forward();
     insert_node_at_beginning(8);
