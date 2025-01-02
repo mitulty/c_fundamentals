@@ -80,6 +80,9 @@ int main(int argc, char const *argv[])
   int var1 = 3, var2 = 2;
   printf("Before swap Value of var1 and var2 is: %d, %d\n", var1, var2);
   swap(&var1, &var2);
-  printf("After swap Value of var1 and var2 is: %d, %d", var1, var2);
+  printf("After swap Value of var1 and var2 is: %d, %d\n", var1, var2);
+  int *p1 = &var1, *p2 = &var2;
+  swap(p1, p2);
+  printf("After swap Value of var1 and var2 is: %d, %d\n", var1, var2);
   return 0;
 }
