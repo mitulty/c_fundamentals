@@ -281,6 +281,55 @@ int numberOfNodes(Node *root)
 
     return numberOfNodes(root->left) + numberOfNodes(root->right) + 1;
 }
+
+Node *deleteNode(Node *root, int data)
+{
+    if (root == NULL)
+    {
+        return NULL;
+    }
+
+    if (data < root->data)
+    {
+        root->left = deleteNode(root->left, data);
+    }
+    else if (data > root->data)
+    {
+        root->right = deleteNode(root->right, data);
+    }
+    // Node to be deleted
+    else
+    {
+        // Case 1: No child
+        if (root->left == NULL && root->right == NULL)
+        {
+            free(root);
+            root = NULL;
+        }
+        // Case 2: One child
+        else if (root->left == NULL)
+        {
+            Node *temp = root;
+            root = root->right;
+            free(temp);
+        }
+        // Case 3: One child
+        else if (root->right == NULL)
+        {
+            Node *temp = root;
+            root = root->left;
+            free(temp);
+        }
+        // Case 4: Two children
+        else
+        {
+            int temp = minelement(root->right);
+            root->data = temp;
+            root->right = deleteNode(root->right, temp);
+        }
+    }
+    return root;
+}
 int main(int argc, char const *argv[])
 {
 

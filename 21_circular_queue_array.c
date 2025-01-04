@@ -33,13 +33,13 @@ void dequeue()
         return;
     }
     printf("Removed: %d\n", Arr[front]);
+    front = (front + 1) % N;
     if (front == rear)
     {
         front = -1;
         rear = -1;
         return;
     }
-    front = (front + 1) % N;
 }
 void peek()
 {

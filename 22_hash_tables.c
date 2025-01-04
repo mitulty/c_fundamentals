@@ -88,7 +88,7 @@ ht_t *ht_create(void)
     ht_t *hashtable = malloc(sizeof(ht_t) * 1);
 
     // allocate table entries
-    hashtable->entries = malloc(sizeof(entry_t *) * TABLE_SIZE);
+    hashtable->entries = (entry_t **)malloc(sizeof(entry_t *) * TABLE_SIZE);
 
     // set each to null (needed for proper operation)
     int i = 0;
