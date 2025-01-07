@@ -320,7 +320,8 @@ Node *deleteNode(Node *root, int data)
             root = root->left;
             free(temp);
         }
-        // Case 4: Two children
+        // Case 4: Two children: Find the minimum element in the right subtree and replace the node to be deleted with the minimum element.
+        // Then delete the minimum element node. Also the maximum element in the left subtree can be used to replace the node to be deleted.
         else
         {
             int temp = minelement(root->right);

@@ -32,7 +32,7 @@
 - Heap using trees is not efficient as compared to heap using arrays.
 - If heapsize is n, then the last non-leaf node is at index [n/2] - 1 and the range of leaf nodes is from [n/2] to (n - 1). The range of non-leaf nodes is from 0 to
   [n/2] - 1.
-- If left child or right child is i then the parent is at index ([i/2] - 1) for the 0th indexed array.
+- If left child or right child is i then the parent is at index int((i-1)/2) for the 0th indexed array.
 - Heap Sort is an in-place sorting algorithm that uses a binary heap data structure to sort elements in ascending or descending order. The heap sort algorithm
   consists of two main steps:
     - Build Heap: Convert the input array into a binary heap data structure.
@@ -147,6 +147,7 @@ void heapSort(int *array, int size)
     }
     for (int i = size - 1; i >= 0; i--)
     {
+        // Deleting the root element and placing it at the end of the array
         array[i] = heap->array[0];
         heap->array[0] = heap->array[heap->size - 1];
         heap->size--;
