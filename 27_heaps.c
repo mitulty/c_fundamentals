@@ -9,30 +9,29 @@
     - Max Heap: In a max heap, the key of the parent node is always greater than the keys of its child nodes.
     - Min Heap: In a min heap, the key of the parent node is always less than the keys of its child nodes.
 - Heaps are used to implement priority queues, which are data structures that store elements along with their priorities. The elements are stored in the heap based
-  on their priority, and the element with the highest priority can be accessed and removed from the heap.
+  on their priority, and the element with the highest/lowest priority can be accessed and removed from the heap.
 - Heaps are also used in algorithms such as heap sort, which is an efficient sorting algorithm that uses the heap data structure to sort elements in ascending or
   descending order.
 - Heaps are implemented using arrays, where the parent-child relationships are maintained using the indices of the array elements. The root node is stored at index 0,
   and the child nodes of a parent node at index i are stored at indices 2i+1 and 2i+2.
 - The heap data structure supports the following operations:
-    - Insert: Insert a new element into the heap.
-    - Delete: Delete an element from the heap.
-    - Extract-Min/Max: Remove and return the element with the minimum/maximum key from the heap.
-    - Heapify: Convert an array of elements into a heap.
-    - Build-Heap: Build a heap from an array of elements.
+    - Insert: Inserts a new element into the heap.
+    - Delete: Deletes an element from the heap.
+    - Extract-Min/Max: Removes and returns the element with the minimum/maximum key from the heap.
+    - Heapify: Converts an array of elements into a heap.
+    - Build-Heap: Builds a heap from an array of elements.
 - The time complexity of the heap operations is as follows:
     - Insert: O(log n)
     - Delete: O(log n)
-    - Extract-Min/Max: O(log n)
+    - Extract Min/Max: O(log n)
     - Heapify: O(n)
     - Build-Heap: O(n)
-- The space complexity of the heap operations is O(n), where n is the number of elements in the heap.
 - Heaps are used in various applications such as priority queues, graph algorithms, and sorting algorithms.
 - Heap using linked list is not efficient as compared to heap using arrays.
 - Heap using trees is not efficient as compared to heap using arrays.
 - If heapsize is n, then the last non-leaf node is at index [n/2] - 1 and the range of leaf nodes is from [n/2] to (n - 1). The range of non-leaf nodes is from 0 to
   [n/2] - 1.
-- If left child or right child is i then the parent is at index int((i-1)/2) for the 0th indexed array.
+- If the left child or right child is at index i then the parent is at index int((i-1)/2) for the 0th indexed array.
 - Heap Sort is an in-place sorting algorithm that uses a binary heap data structure to sort elements in ascending or descending order. The heap sort algorithm
   consists of two main steps:
     - Build Heap: Convert the input array into a binary heap data structure.

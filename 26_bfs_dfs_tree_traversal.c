@@ -169,6 +169,16 @@ struct Node *FindMin(struct Node *root)
     return root;
 }
 
+// Function to find Node with m value in a BST
+struct Node *FindMax(struct Node *root)
+{
+    if (root == NULL)
+        return NULL;
+    while (root->right != NULL)
+        root = root->right;
+    return root;
+}
+
 // Function to find Inorder Successor in a BST
 struct Node *Getsuccessor(struct Node *root, int data)
 {
