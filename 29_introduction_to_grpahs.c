@@ -191,9 +191,9 @@ void addEdge(struct Node *adj[], int i, int j)
 }
 
 // Function to display the adjacency list
-void displayAdjList(struct Node *adj[], int V)
+void displayAdjList(struct Node *adj[], int Vertex)
 {
-  for (int i = 0; i < V; i++)
+  for (int i = 0; i < Vertex; i++)
   {
     printf("%d: ", i); // Print the vertex
     struct Node *temp = adj[i];
