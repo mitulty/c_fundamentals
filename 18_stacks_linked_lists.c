@@ -1,33 +1,28 @@
 /**
  * @Author: Mitul Tyagi
- * @Date:   2024-12-14 22:40:18
  * @Description: Stacks using Linked List
  */
 
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
 #include <string.h>
 
-typedef struct node
-{
-    int data;
-    struct node *link;
+typedef struct node {
+        int data;
+        struct node *link;
 } Node;
 
 Node *TOP = NULL;
-Node *create_node(int x)
-{
+Node *create_node(int x) {
     Node *temp = (Node *)malloc(sizeof(Node));
     temp->data = x;
     temp->link = NULL;
     return temp;
 }
-void Push(int x)
-{
+void Push(int x) {
     Node *temp = create_node(x);
-    if (TOP == NULL)
-    {
+    if (TOP == NULL) {
         TOP = temp;
         return;
     }
@@ -35,11 +30,9 @@ void Push(int x)
     TOP = temp;
     return;
 }
-void Pop()
-{
+void Pop() {
     Node *temp = TOP;
-    if (temp == NULL)
-    {
+    if (temp == NULL) {
         printf("Stack is Empty!!!\n");
         return;
     }
@@ -48,40 +41,33 @@ void Pop()
     free(temp);
     return;
 }
-void Top()
-{
-    if (TOP == NULL)
-    {
+void Top() {
+    if (TOP == NULL) {
         printf("Stack is Empty!!!\n");
         return;
     }
     printf("Top of the Stack: %d\n", TOP->data);
     return;
 }
-int IsEmpty()
-{
+int IsEmpty() {
     if (TOP == NULL)
         return 1;
     else
         return 0;
 }
-void display()
-{
+void display() {
     Node *temp = TOP;
-    if (TOP == NULL)
-    {
+    if (TOP == NULL) {
         printf("Stack is Empty!!!\n");
         return;
     }
-    while (temp != NULL)
-    {
+    while (temp != NULL) {
         printf("%d\n", temp->data);
         temp = temp->link;
     }
     return;
 }
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
     Push(5);
     Push(45);
     Push(98);
@@ -97,15 +83,5 @@ int main(int argc, char const *argv[])
     Pop();
     display();
     Top();
-    return 0;
-}
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <string.h>
-
-int main(int argc, char const *argv[])
-{
-    /* code */
     return 0;
 }

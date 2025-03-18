@@ -1,16 +1,14 @@
 /**
  * @Author: Mitul Tyagi
- * @Date:   2024-12-14 22:45:17
  * @Description: Queues using Linked List
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node
-{
-    int x, y;
-    struct node *next;
+typedef struct node {
+        int x, y;
+        struct node *next;
 } Node;
 Node *front = NULL;
 Node *rear = NULL;
@@ -20,16 +18,14 @@ void dequeue();
 void peek();
 void isEmpty();
 void isFull();
-int main()
-{
+int main() {
     int n, m, ch;
-    do
-    {
-        printf("\n\nQueue Menu\n1. Add \n2. Remove\n3. Display\n4. Peek\n5. IsEmpty\n0. Exit");
+    do {
+        printf("\n\nQueue Menu\n1. Add \n2. Remove\n3. Display\n4. Peek\n5. "
+               "IsEmpty\n0. Exit");
         printf("\nEnter Choice 0-5? : ");
         scanf("%d", &ch);
-        switch (ch)
-        {
+        switch (ch) {
         case 1:
             printf("\nEnter number ");
             scanf("%d", &n);
@@ -51,67 +47,52 @@ int main()
         }
     } while (ch != 0);
 }
-void enqueue(int a, int b)
-{
+void enqueue(int a, int b) {
     Node *nptr = (Node *)malloc(sizeof(struct node));
     nptr->x = a;
     nptr->y = b;
     nptr->next = NULL;
-    if (rear == NULL)
-    {
+    if (rear == NULL) {
         front = nptr;
         rear = nptr;
-    }
-    else
-    {
+    } else {
         rear->next = nptr;
         rear = rear->next;
     }
 }
-void peek()
-{
-    if (front == NULL)
-    {
+void peek() {
+    if (front == NULL) {
         printf("\n\nqueue is empty \n");
         return;
     }
     printf("Front Element: (%d,%d)\n", front->x, front->y);
 }
-void isEmpty()
-{
+void isEmpty() {
     if (front == NULL)
         printf("\n\nqueue is empty \n");
     else
         printf("\n\nqueue is not empty \n");
 }
-void display()
-{
+void display() {
     Node *temp;
     temp = front;
     printf("\n");
-    while (temp != NULL)
-    {
+    while (temp != NULL) {
         printf("\n(%d,%d)", temp->x, temp->y);
         temp = temp->next;
     }
 }
-void dequeue()
-{
-    if (front == NULL)
-    {
+void dequeue() {
+    if (front == NULL) {
         printf("\n\nqueue is empty \n");
-    }
-    else
-    {
+    } else {
         Node *temp;
         temp = front;
-        if (front == rear)
-        {
+        if (front == rear) {
             printf("Last Element\n");
             front = NULL;
             rear = NULL;
-        }
-        else
+        } else
             front = front->next;
         printf("\n\n(%d,%d) deleted", temp->x, temp->y);
         free(temp);

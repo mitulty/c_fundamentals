@@ -1,42 +1,36 @@
 /**
  * @Author: Mitul Tyagi
- * @Date:   2024-12-14 22:53:55
  * @Description: Two Sum using Hash Tables
  */
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
 #include <string.h>
 
 #define TABLE_SIZE 15
 #define PRIME_NUM 13
-typedef struct Node
-{
-    int index;
-    char *name;
-    struct Node *next;
+typedef struct Node {
+        int index;
+        char *name;
+        struct Node *next;
 } Node;
 
-int hash_function(int value)
-{
+int hash_function(int value) {
     int hash_value = abs((value % PRIME_NUM));
     return hash_value;
 }
 
-void hash_table_init(Node *ht)
-{
-    for (int i = 0; i < TABLE_SIZE; i++)
-    {
+void hash_table_init(Node *ht) {
+    for (int i = 0; i < TABLE_SIZE; i++) {
         ht[i].next = NULL;
         ht[i].index = -1;
+        ht[i].name = "";
     }
 }
 
-void fill_hash_table(int val, char *name, Node *ht)
-{
+void fill_hash_table(int val, char *name, Node *ht) {
     int hash = hash_function(val);
-    if (ht[hash].index == -1)
-    {
+    if (ht[hash].index == -1) {
         ht[hash].index = val;
         ht[hash].name = name;
         return;
@@ -52,36 +46,29 @@ void fill_hash_table(int val, char *name, Node *ht)
     return;
 }
 
-Node *get_value(int val, Node *ht)
-{
+Node *get_value(int val, Node *ht) {
     int hash = hash_function(val);
     if (ht[hash].index == -1)
         return NULL;
-    if (ht[hash].index == val)
-    {
+    if (ht[hash].index == val) {
         return &ht[hash];
     }
     Node *temp = (ht[hash].next);
-    while (temp != NULL)
-    {
+    while (temp != NULL) {
         if (temp->index == val)
             return temp;
         temp = temp->next;
     }
 }
-void display_hash_table(Node *ht)
-{
-    for (int i = 0; i < TABLE_SIZE; i++)
-    {
-        if (ht[i].index == -1)
-        {
+void display_hash_table(Node *ht) {
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        if (ht[i].index == -1) {
             printf("%d: -1\n", i);
             continue;
         }
         printf("%d : ", i);
         Node *temp = &ht[i];
-        while (temp != NULL)
-        {
+        while (temp != NULL) {
             printf("(%d,%s)-> ", temp->index, temp->name);
             temp = temp->next;
         }
@@ -89,11 +76,11 @@ void display_hash_table(Node *ht)
     }
     return;
 }
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
     // Both the below declarations work.
     // Node hash_table[TABLE_SIZE]; // static allocation on stack
-    Node *hash_table = (Node *)malloc(sizeof(Node) * TABLE_SIZE); // dynamic allocation on heap
+    Node *hash_table =
+        (Node *)malloc(sizeof(Node) * TABLE_SIZE); // dynamic allocation on heap
     hash_table_init(hash_table);
     fill_hash_table(34, "John", hash_table);
     fill_hash_table(367, "Liam", hash_table);

@@ -1,39 +1,43 @@
 /**
  * @Author: Mitul Tyagi
- * @Date:   2024-07-19 00:20:56
  * @Description: Memory Functions in libc
  */
 /*
-- The functions memcmp, memcpy, memmove and memset are vital for our system and are used throughout the standard libaries (e.g. calloc, realloc). These
-  functions are also used during the startup process, when code move any relocatable sections and initialize variables in the bss section to 0.
-- The memset() function is used to set all the bytes in a block memory to particular value. This is used to set a memory location to null character '\0'.
-                                   void *memset(void *dest,int c,size_t count);
-- The memcpy() function is used to copies bytes of data between memory blocks. This will copy "count" characters from the string "src" into the memory pointed
-  to by "dest".
-                                    void *memcpy(void *dest,void *src,size_t count);
+- The functions memcmp, memcpy, memmove and memset are vital for our system and
+are used throughout the standard libaries (e.g. calloc, realloc). These
+functions are also used during the startup process, when code move any
+relocatable sections and initialize variables in the bss section to 0.
+- The memset() function is used to set all the bytes in a block memory to
+particular value. This is used to set a memory location to null character '\0'.
+            void *memset(void *dest,int c,size_t count);
+- The memcpy() function is used to copies bytes of data between memory blocks.
+This will copy "count" characters from the string "src" into the memory pointed
+to by "dest".
+            void *memcpy(void *dest,void *src,size_t count);
 - The memmove() function moves block of memory.
-                                    void *memmove(void *dest,void *src,size_t count);
-- The C library memcmp() function can be used to compare two blocks of memory. In general, it is used to compare the binary data or raw data. It returns a
-  value < 0 if str1<str2 ; value > 0 if st2 < str1 and value ==0 if both are equivalent. The paramter n defines the number of bytes to be compared.
-                                    int memcmp(const void *str1, const void *str2, size_t n)
+            void *memmove(void *dest,void *src,size_t count);
+- The C library memcmp() function can be used to compare two blocks of memory.
+In general, it is used to compare the binary data or raw data. It returns a
+value < 0 if str1<str2 ; value > 0 if st2 < str1 and value ==0 if both are
+equivalent. The paramter n defines the number of bytes to be compared.
+            int memcmp(const void *str1, const void *str2, size_t n)
 - A weak symbol can be overridden by another function definition.
-- Weak symbols allow you to keep a generic implementation that is portable across platforms. If you have an optimized version valid only for
-  specific platforms, you can override the default implementation and get the optimization benefits for that platform.
+- Weak symbols allow you to keep a generic implementation that is portable
+across platforms. If you have an optimized version valid only for specific
+platforms, you can override the default implementation and get the optimization
+benefits for that platform.
 
 */
-#include <stdio.h>
-#include <stdlib.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <string.h>
-int memcmp(const void *p1, const void *p2, size_t n)
-{
+int memcmp(const void *p1, const void *p2, size_t n) {
     size_t i;
 
     /**
      * p1 and p2 are the same memory? easy peasy! bail out
      */
-    if (p1 == p2)
-    {
+    if (p1 == p2) {
         return 0;
     }
 
@@ -45,15 +49,13 @@ int memcmp(const void *p1, const void *p2, size_t n)
     // if i == length, then we have passed the test
     return (i == n) ? 0 : (*(uint8_t *)p1 - *(uint8_t *)p2);
 }
-int memcmp_new(const void *vl, const void *vr, size_t n)
-{
+int memcmp_new(const void *vl, const void *vr, size_t n) {
     const unsigned char *l = vl, *r = vr;
     for (; n && *l == *r; n--, l++, r++)
         ;
     return n ? *l - *r : 0;
 }
-void *__attribute__((weak)) memset_new(void *dest, int c, size_t n)
-{
+void *__attribute__((weak)) memset_new(void *dest, int c, size_t n) {
     unsigned char *s = dest;
     size_t k;
 
@@ -95,16 +97,14 @@ void *__attribute__((weak)) memset_new(void *dest, int c, size_t n)
 
     return dest;
 }
-void *__attribute__((weak)) memmove(void *s1, const void *s2, size_t n)
-{
+void *__attribute__((weak)) memmove(void *s1, const void *s2, size_t n) {
     return memcpy(s1, s2, n);
 }
 char message1[60] = "Four score and seven years ago ...";
 char message2[60] = "abcdefghijklmnopqrstuvwxyz";
 char temp[60];
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     printf("\nmessage1[] before memset():\t%s", message1);
     memset(message1 + 5, '@', 10);
     printf("\nmessage1[] after memset():\t%s", message1);
@@ -134,16 +134,11 @@ int main(int argc, char *argv[])
 
         ret = memcmp(str1, str2, 5);
 
-        if (ret > 0)
-        {
+        if (ret > 0) {
             printf("str2 is less than str1");
-        }
-        else if (ret < 0)
-        {
+        } else if (ret < 0) {
             printf("str1 is less than str2");
-        }
-        else
-        {
+        } else {
             printf("str1 is equal to str2");
         }
         printf("\n");

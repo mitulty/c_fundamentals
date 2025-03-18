@@ -1,53 +1,75 @@
 /*
   @Author: Mitul Tyagi
-  @Date:   2023-10-28 16:18:02
   @Description: Play with variables
 */
-
 /*
-- In C programming, type qualifiers are keywords that can be used to modify the properties of variables. The following are the type qualifiers in C:
-        -> const: The const type qualifier is used to create constant variables. The value of a constant variable cannot be changed.
-        -> volatile: The volatile type qualifier is used to create variables whose values can be changed by external devices or hardware.
-        -> restrict: The restrict type qualifier is used to restrict the way that a pointer can be used.
-        ->_Atomic: The _Atomic type qualifier is used to indicate that a variable is atomic. This means that the value of the variable cannot be changed by
-                   multiple threads at the same time.
-- Const: The qualifier const can be applied to the declaration of any variable to specify that its value will not be changed (which depends upon where const
-         variables are stored, we may change the value of the const variable by using a pointer). The result is implementation-defined if an attempt is made
-         to change a const. In C programming, the const qualifier can be used in different contexts to provide various behaviors. Here are some different use
-         cases of the const qualifier in C:
-        -> Constant Variables: The value of this variable cannot be modified once it is initialized.
-        -> Pointer to Constant: We can change the pointer to point to any other integer variable, but cannot change the value of the object (entity) pointed
-           using pointer ptr.
-        -> Constant Pointer to Variable: We can change the value of the object pointed by the pointer, but cannot change the pointer to point to another
-            variable.
-        -> Constant Pointer to Constant: We cannot change the value pointed by the pointer as well as we cannot point the pointer to other variables.
-- Volatile: The volatile type qualifier is used to create variables whose values can't be changed in the program explicitly but can be changed by any external
-            device or hardware. It is typically used for variables that can be accessed by interrupt service routines, hardware, and updated by several threads
-            or processes. The volatile qualifier informs the compiler that any reads or writes to the variable should not be optimized away since the variable's
-            value might change without the program's permission. When a variable is declared  as volatile, the compiler generates code that ensures that every
-            access to the variable reads or writes its actual value, rather than using any cached or optimized value. This guarantees that the program behaves
-            as expected, even if the variable’s value changes unexpectedly.
-- Restrict: Restrict keyword specifies that a particular pointer argument does not alias any other and the compiler doesn’t need to add any additional checks.
-            restrict keyword is mainly used in pointer declarations as a type qualifier for pointers. It doesn’t add any new functionality. It is only a way
-            for the programmer to inform about an optimization that the compiler can make.
-- In C, data type modifiers are used to modify the length or size of data that various data types hold such as int, char, and double as per the requirements.
-  By using these data type modifiers we can precisely utilize the computer memory. In C, there are 4 data type modifiers that are used to modify data types.
-  They are used as prefixed to the basic data types. These are: int, long, signed and unsigned.
-- C Storage Classes are used to describe the features of a variable/function. These features basically include the scope, visibility, and lifetime which help
-  us to trace the existence of a particular variable/function during the runtime of a program. These are: auto, static, extern and register.
-
+- In C programming, type qualifiers are keywords that can be used to modify the
+properties of variables. The following are the type qualifiers in C:
+    -> const: The const type qualifier is used to create constant variables.
+       The value of a constant variable cannot be changed.
+    -> volatile: The volatile type qualifier is used to create variables
+       whose values can be changed by external devices or hardware.
+    -> restrict: The restrict type qualifier is used to restrict the way
+       that a pointer can be used.
+    -> _Atomic: The _Atomic type qualifier is used to indicate that a variable
+       is atomic. This means that the value of the variable cannot be changed by
+       multiple threads at the same time.
+- Const: The qualifier const can be applied to the declaration of any variable
+to specify that its value will not be changed (which depends upon where const
+variables are stored, we may change the value of the const variable by using a
+pointer). The result is implementation-defined if an attempt is made to
+change a const. In C programming, the const qualifier can be used in different
+contexts to provide various behaviors. Here are some different use cases of the
+const qualifier in C:
+        -> Constant Variables: The value of this variable cannot be modified
+           once it is initialized.
+        -> Pointer to Constant: We can change the pointer to point to any other
+           integer variable, but cannot change the value of the object (entity)
+           pointed using pointer ptr.
+        -> Constant Pointer to Variable: We can change the value of the object
+           pointed by the pointer, but cannot change the pointer to point to
+           another variable.
+        -> Constant Pointer to Constant: We cannot change the value pointed by
+           the pointer as well as we cannot point the pointer to other
+           variables.
+- Volatile: The volatile type qualifier is used to create variables whose values
+can't be changed in the program explicitly but can be changed by any external
+device or hardware. It is typically used for variables that can be
+accessed by interrupt service routines, hardware, and updated by several threads
+or processes. The volatile qualifier informs the compiler that any
+reads or writes to the variable should not be optimized away since the
+variable's value might change without the program's permission. When a variable
+is declared  as volatile, the compiler generates code that ensures that every
+access to the variable reads or writes its actual value, rather than
+using any cached or optimized value. This guarantees that the program behaves as
+expected, even if the variable’s value changes unexpectedly.
+- Restrict: Restrict keyword specifies that a particular pointer argument does
+not alias any other and the compiler doesn’t need to add any additional checks.
+restrict keyword is mainly used in pointer declarations as a type qualifier for
+pointers. It doesn’t add any new functionality. It is only a way for the
+programmer to inform about an optimization that the compiler can make.
+- The restrict keyword is a type qualifier that was introduced in the C99
+standard. It is used to tell the compiler that a pointer is the only reference
+or access point to the memory it points to, allowing the compiler to make
+optimizations based on that information.
+- In C, data type modifiers are used to modify the length or size of data that
+various data types hold such as int, char, and double as per the requirements.
+By using these data type modifiers we can precisely utilize the computer
+memory. In C, there are 4 data type modifiers that are used to modify data
+types. They are used as prefixed to the basic data types. These are: int, long,
+signed and unsigned.
+- C Storage Classes are used to describe the features of a variable/function.
+These features basically include the scope, visibility, and lifetime which help
+us to trace the existence of a particular variable/function during the runtime
+of a program. These are: auto, static, extern and register.
 */
-
-#include <stdio.h>
-#include <stdlib.h>
 #include <stdint.h>
-#include <string.h>
+#include <stdio.h>
 // declaring the variable which is to be made extern
-//  an initial value can also be initialized to x
+// an initial value can also be initialized to x
 int x;
 
-void autoStorageClass()
-{
+void autoStorageClass() {
 
     printf("\nDemonstrating auto class\n\n");
 
@@ -63,8 +85,7 @@ void autoStorageClass()
     printf("--------------------------------");
 }
 
-void registerStorageClass()
-{
+void registerStorageClass() {
 
     printf("\nDemonstrating register class\n\n");
 
@@ -79,8 +100,7 @@ void registerStorageClass()
     printf("--------------------------------");
 }
 
-void externStorageClass()
-{
+void externStorageClass() {
 
     printf("\nDemonstrating extern class\n\n");
 
@@ -107,8 +127,7 @@ void externStorageClass()
     printf("--------------------------------");
 }
 
-void staticStorageClass()
-{
+void staticStorageClass() {
     int i = 0;
 
     printf("\nDemonstrating static class\n\n");
@@ -123,8 +142,7 @@ void staticStorageClass()
 
     printf("\nLoop started:\n");
 
-    for (i = 1; i < 5; i++)
-    {
+    for (i = 1; i < 5; i++) {
 
         // Declaring the static variable 'y'
         static int y = 5;
@@ -158,8 +176,7 @@ void staticStorageClass()
 // in output (or logic). It is just a way for
 // programmer to tell compiler about an
 // optimization
-void use(int *a, int *b, int *restrict c)
-{
+void use(int *a, int *b, int *restrict c) {
     *a += *c;
 
     // Since c is restrict, compiler will
@@ -168,8 +185,7 @@ void use(int *a, int *b, int *restrict c)
     // assembly code is optimized
     *b += *c;
 }
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
     {
         const int var = 1000;
         printf("Constant Variable Value: %d\n", var);
@@ -178,7 +194,8 @@ int main(int argc, char const *argv[])
             // 'var'
             var = 200;
         */
-        int *ptr = &var; // warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+        int *ptr = &var; // warning: initialization discards ‘const’ qualifier
+                         // from pointer target type [-Wdiscarded-qualifiers]
         *ptr = 10;
         printf("Pointer Value: %d, Constant Variable Value: %d\n", *ptr, var);
     }
@@ -225,7 +242,9 @@ int main(int argc, char const *argv[])
     {
         // Poitner to Constant
         /*
-        Down qualification is not allowed in C++ and may cause warnings in C. Down qualification refers to the situation where a qualified type is assigned to a non-qualified type.
+        Down qualification is not allowed in C++ and may cause warnings in C.
+        Down qualification refers to the situation where a qualified type is
+        assigned to a non-qualified type.
         */
         int i = 10;
         int const j = 20;
@@ -239,7 +258,8 @@ int main(int argc, char const *argv[])
            error/warning In C, the compiler may throw a warning, but
            casting is implicitly allowed */
 
-        ptr = &j; // warning: assignment discards ‘const’ qualifier from pointer target type
+        ptr = &j; // warning: assignment discards ‘const’ qualifier from pointer
+                  // target type
         *ptr = 234;
 
         /* In C++, it is called 'down qualification'. The type
@@ -351,7 +371,8 @@ Demonstrating static class
 
 Declaring 'y' as static inside the loop.
 But this declaration will occur only once as 'y' is static.
-If not, then every time the value of 'y' will be the declared value 5 as in the case of variable 'p'
+If not, then every time the value of 'y' will be the declared value 5 as in the
+case of variable 'p'
 
 Loop started:
 

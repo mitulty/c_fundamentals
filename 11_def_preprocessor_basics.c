@@ -1,6 +1,5 @@
 /*
   @Author: Mitul Tyagi
-  @Date:   2020-11-03 16:38:34
   @Description: Preprocessor Directives and Macros
 */
 
@@ -35,16 +34,12 @@ int let = 0;
 
 #include <stdio.h>
 int google(int d);
-int main()
-{
-  register int p = 4, q = 5;
-  q = (q > p++) ? p = (5 ? (q = (2, 4)) : p || q) : (p = (3, 5));
-  printf("%d %d\n", q, p);
-  printf("%d %d %c %d\n", s, t, val, let);
-  return 0;
+int main() {
+    register int p = 4, q = 5;
+    q = (q > p++) ? p = (5 ? (q = (2, 4)) : p || q) : (p = (3, 5));
+    printf("%d %d\n", q, p);
+    printf("%d %d %c %d\n", s, t, val, let);
+    return 0;
 }
 
-int google(int pk)
-{
-  printf("%d\n", pk += pk << 2 << 1);
-}
+int google(int pk) { printf("%d\n", pk += pk << 2 << 1); }

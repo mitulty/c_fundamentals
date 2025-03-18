@@ -1,28 +1,22 @@
 /**
  * @Author: Mitul Tyagi
- * @Date:   2024-12-13 10:22:07
  * @Description:  Linear Queues using Arrays
  */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <stdint.h>
-#include <string.h>
+#include <stdio.h>
 #define N 5
 int Arr[N];
 int front = -1, rear = -1;
-void enqueue(int var)
-{
-    if (front == -1)
-    {
+void enqueue(int var) {
+    if (front == -1) {
         front = 0;
         rear = 0;
         Arr[front] = var;
         printf("Added: %d\n", Arr[rear]);
         return;
     }
-    if (rear == N - 1)
-    {
+    if (rear == N - 1) {
         printf("Queue is full\n");
         return;
     }
@@ -30,52 +24,43 @@ void enqueue(int var)
     Arr[rear] = var;
     printf("Added: %d\n", Arr[rear]);
 }
-void dequeue()
-{
-    if (front == -1)
-    {
+void dequeue() {
+    if (front == -1) {
         printf("Queue is Empty!!!\n");
         return;
     }
     printf("Removed: %d\n", Arr[front]);
     front++;
-    if (front == rear)
-    {
+    if (front == rear) {
         front = -1;
         rear = -1;
         return;
     }
 }
-void peek()
-{
-    if (front == -1)
-    {
+void peek() {
+    if (front == -1) {
         printf("Queue is Empty!!!\n");
         return;
     }
     printf("First Element: %d\n", Arr[front]);
     return;
 }
-void isEmpty()
-{
+void isEmpty() {
     if (front == -1)
         printf("Queue is Empty!!!\n");
     else
         printf("Queue is not Empty\n");
     return;
 }
-void isFull()
-{
+void isFull() {
     if (rear == N - 1)
         printf("Queue is Full\n");
     else
         printf("Queue is not Full\n");
 }
-void display()
-{
+void display() {
     int i;
-    if (front == -1)
-    {
+    if (front == -1) {
         printf("Queue is Empty!!!\n");
         return;
     }
@@ -84,8 +69,7 @@ void display()
         printf("%d\n", Arr[i]);
     return;
 }
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
     isEmpty();
     enqueue(5);
     enqueue(1345);

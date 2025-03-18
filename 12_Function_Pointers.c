@@ -1,15 +1,13 @@
 /**
  * @Author: Mitul Tyagi
- * @Date:   2024-07-15 18:10:27
  * @Description: Function Pointer
  */
 /*
-- Function pointers are a pointer that points to a memory region which has codes. They point to instructions.
+- Function pointers are a pointer that points to a memory region which has
+codes. They point to instructions.
 */
-#include <stdio.h>
-#include <stdlib.h>
 #include <stdint.h>
-#include <string.h>
+#include <stdio.h>
 
 #define ADD 0
 #define SUB 1
@@ -24,32 +22,19 @@ static void divide(int, int);
 
 typedef void (*operation)(int, int);
 operation arithmetic[4] = {add, sub, &mul, &divide};
-// This defines a datatype funcptr which is function pointer. This type then can be used to create different variables and assign those variables the value.
+// This defines a datatype funcptr which is function pointer. This type then can
+// be used to create different variables and assign those variables the value.
 typedef void (*funcptr)(int);
 
-void function_1()
-{
-    printf("Functiion_1() Called\n");
-}
+void function_1() { printf("Functiion_1() Called\n"); }
 
-void function_2()
-{
-    printf("Functiion_2() Called\n");
-}
+void function_2() { printf("Functiion_2() Called\n"); }
 
-void function_3(int a)
-{
-    printf("Functiion_3() Called with a: %d\n", a);
-}
+void function_3(int a) { printf("Functiion_3() Called with a: %d\n", a); }
 
-void function_4(int a)
-{
-    printf("Functiion_4() Called with a: %d\n", a);
-}
+void function_4(int a) { printf("Functiion_4() Called with a: %d\n", a); }
 
-int main(int argc, char const *argv[])
-{
-    /* code */
+int main(int argc, char const *argv[]) {
     void (*func_ptr)();
     func_ptr = function_1;
     func_ptr();
@@ -67,33 +52,26 @@ int main(int argc, char const *argv[])
     funcptr pf;
     pf = &function_4;
     pf(10);
-    execute_math_operation(0, 12, 4);
-    execute_math_operation(1, 12, 4);
-    execute_math_operation(2, 12, 4);
-    execute_math_operation(3, 12, 4);
-    execute_math_operation(3, 12, 0);
+    execute_math_operation(ADD, 12, 4);
+    execute_math_operation(SUB, 12, 4);
+    execute_math_operation(MUL, 12, 4);
+    execute_math_operation(DIV, 12, 4);
+    execute_math_operation(DIV, 12, 0);
     return 0;
 }
-static void add(int a, int b)
-{
+static void add(int a, int b) {
     printf("Addition of %d and %d: %d\n", a, b, a + b);
 }
-static void sub(int a, int b)
-{
+static void sub(int a, int b) {
     printf("Subtraction of %d and %d: %d\n", a, b, a - b);
 }
-static void mul(int a, int b)
-{
+static void mul(int a, int b) {
     printf("Multiplication of %d and %d: %d\n", a, b, a * b);
 }
-static void divide(int a, int b)
-{
+static void divide(int a, int b) {
     if (b)
         printf("Division of %d and %d: %d\n", a, b, a / b);
     else
         printf("Division by zero. Error!!!\n");
 }
-void execute_math_operation(int op, int a, int b)
-{
-    arithmetic[op](a, b);
-}
+void execute_math_operation(int op, int a, int b) { arithmetic[op](a, b); }
