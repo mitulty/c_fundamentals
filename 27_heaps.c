@@ -33,7 +33,8 @@ index 0, and the child nodes of a parent node at index i are stored at indices
     - Insert: O(log n)
     - Delete: O(log n)
     - Extract Min/Max: O(log n)
-    - Heapify: O(n)
+    - Heapify: O(n) (Building a heap from an array)
+    - Heapify: O(log n) (Maintaining the heap property after insertion or deletion)
     - Build-Heap: O(n)
 - Heaps are used in various applications such as priority queues, graph
 algorithms, and sorting algorithms.
@@ -56,6 +57,21 @@ algorithm is O(1), as it is an in-place sorting algorithm.
 - Heap sort is a comparison-based sorting algorithm that is efficient for large
 datasets and is not stable. It is used in various applications such as operating
 systems, network routing algorithms, and database systems.
+- To build a heap from an array, we typically use the Bottom-Up Heapify method,
+also known as "heapify" or "build-heap", which transforms an unsorted array into
+a binary heap (usually a min-heap or max-heap).
+-  Steps to Build a Heap from an Array (Bottom-Up Heapify). Given an array arr[]
+of size n, here's how we build a heap:
+    1. Start from the last non-leaf node. In a 0-based array, the last non-leaf node
+    is at index last_non_leaf =⌊𝑛/2⌋ − 1. Leaf nodes (from ⌊n/2⌋ to n−1) already satisfy
+    the heap property (no children), so we don’t need to heapify them.
+    2. Call heapify() from bottom to top for each index i from ⌊n/2⌋ − 1 to 0:
+            for (int i = n/2 - 1; i >= 0; i--)
+                heapify(arr, n, i);
+    The heapify(arr, n, i) ensures that the subtree rooted at index i satisfies the heap
+    property (i.e., parent is larger than its children for max-heap).
+    3. After processing all nodes this way, the array will represent a valid heap. Each
+    heapify call is O(log n). But total time for build-heap: O(n)
  */
 #include <stdint.h>
 #include <stdio.h>
@@ -153,13 +169,40 @@ void delete(Heap *heap, int data)
     heap->size--;
     heapify(heap, i);
 }
-void heapSort(int *array, int size)
+
+void buildHeap(Heap *heap) {
+    for (int i = (heap->size / 2) - 1; i >= 0; i--) {
+        heapify(heap, i);
+    }
+}
+
+Heap* createHeapFromArray(int *array, int size)
 {
-    Heap *heap = createHeap(size);
+    Heap *heap = (Heap *)malloc(sizeof(Heap));
+    heap->array = (int *)malloc(sizeof(int) * size);
+    heap->capacity = size;
+    heap->size = size;
+
     for (int i = 0; i < size; i++)
     {
-        insert(heap, array[i]);
+        heap->array[i] = array[i];
     }
+
+    return heap;
+}
+
+void heapSort(int *array, int size)
+{
+    Heap *heap = createHeapFromArray(array, size); // New helper function
+    buildHeap(heap);  // O(n)
+
+    // O(n log n) for creating the heap
+    // The following commented code is an alternative way to insert elements into the heap
+    // Heap *heap = createHeap(size);
+    // for (int i = 0; i < size; i++)
+    // {
+    //     insert(heap, array[i]);
+    // }
     for (int i = size - 1; i >= 0; i--)
     {
         // Deleting the root element and placing it at the end of the array

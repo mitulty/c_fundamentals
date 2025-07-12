@@ -35,8 +35,8 @@ const qualifier in C:
 - Volatile: The volatile type qualifier is used to create variables whose values
 can't be changed in the program explicitly but can be changed by any external
 device or hardware. It is typically used for variables that can be
-accessed by interrupt service routines, hardware, and updated by several threads
-or processes. The volatile qualifier informs the compiler that any
+accessed by interrupt service routines, hardware, or updated by several threads
+and processes. The volatile qualifier informs the compiler that any
 reads or writes to the variable should not be optimized away since the
 variable's value might change without the program's permission. When a variable
 is declared  as volatile, the compiler generates code that ensures that every
@@ -62,6 +62,10 @@ signed and unsigned.
 These features basically include the scope, visibility, and lifetime which help
 us to trace the existence of a particular variable/function during the runtime
 of a program. These are: auto, static, extern and register.
+- Const variables defined in a function are created in the stack memory
+  and are destroyed when the function exits. Const variables defined outside
+  a function are created in the data segment and are destroyed when the program
+  exits.
 */
 #include <stdint.h>
 #include <stdio.h>
@@ -207,7 +211,7 @@ int main(int argc, char const *argv[])
         printf("Pointer Value: %d, Constant Variable Value: %d\n", *ptr, var);
     }
     {
-        // Poitner to Constant
+        // Pointer to a constant
         int i = 10;
         int j = 20;
         /* ptr is pointer to constant */
@@ -222,7 +226,7 @@ int main(int argc, char const *argv[])
         printf("ptr: %d\n", *ptr);
     }
     {
-        // Poitner to Constant
+        // Pointer to a constant
         int const i = 10;
         int j = 20;
 
@@ -247,7 +251,7 @@ int main(int argc, char const *argv[])
         printf("ptr: %d\n", *ptr);
     }
     {
-        // Poitner to Constant
+        // Pointer to Constant
         /*
         Down qualification is not allowed in C++ and may cause warnings in C.
         Down qualification refers to the situation where a qualified type is
@@ -265,8 +269,7 @@ int main(int argc, char const *argv[])
            error/warning In C, the compiler may throw a warning, but
            casting is implicitly allowed */
 
-        ptr = &j; // warning: assignment discards ‘const’ qualifier from pointer
-                  // target type
+        ptr = &j; // warning: assignment discards ‘const’ qualifier from pointer target type
         *ptr = 234;
 
         /* In C++, it is called 'down qualification'. The type
@@ -288,9 +291,10 @@ int main(int argc, char const *argv[])
         printf("*ptr: %d and j: %d\n", *ptr, j);
     }
     {
-        // Constant Poitner to Variable
+        // constant pointer to a variable
         int i = 10;
         int j = 20;
+
         /* constant pointer to integer */
         int *const ptr = &i;
 
@@ -299,12 +303,14 @@ int main(int argc, char const *argv[])
         *ptr = 100; /* valid */
         printf("ptr: %d\n", *ptr);
 
+        // Cannot change the pointer to point to another variable.
         // ptr = &j; /* error */
     }
     {
-        // Constant Poitner to Constant
+        // Constant Pointer to a Constant
         int i = 10;
         int j = 20;
+
         /* constant pointer to constant integer */
         const int *const ptr = &i;
 

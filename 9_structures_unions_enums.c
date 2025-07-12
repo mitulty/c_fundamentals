@@ -35,15 +35,15 @@ into another:
 - The only legal operations on a structure are copying it or assigning to it as
 a unit, taking its address with &, and accessing its members. Copy and
 assignment include passing arguments to functions and returning values from
-functions as well. They may not compared. A structure may be initialized by a
+functions as well. They may not be compared. A structure may be initialized by a
 list of constant member values; an automatic structure may also be intialized
 by an assignment.
 - Structure parameters are passed by value. If a large structure is to be passed
-to a function, it is generally more efficient to pass a pinter than to copy the
+to a function, it is generally more efficient to pass a pointer than to copy the
 whole structure. A structure can contain an array as one of its member. Also an
 array of structures can be formed.
 - Size of a structure need not be equal to the sum of the size of individual
-arrays. Because of alignment requirements for different objects, there may be
+arrays. Because of alignment requirements for different architectures, there may be
 unnamed "holes" in a structure. The sizeof operator returns the proper value.
 - The self-referential structures in C are those structures that contain
 references to the same type as themselves i.e. they contain a member of the type
@@ -65,7 +65,8 @@ provides two ways for structure packing:
                     -> Using __attribute((packed))__
 - Bit Fields are used to specify the length of the structure members in bits. If
 the maximum length of the member is known, then the bit fields can be used to
-specify the size and reduce memory consumption.
+specify the size and reduce memory consumption. The address of the bit field cannot
+be taken using the &. The syntax for defining a bit field is:
                             struct structure_name {
                                 data_type member_name: width_of_bit-field;
                             };

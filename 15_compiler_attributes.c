@@ -97,27 +97,6 @@
         - section ("section-name"): Normally, the compiler places the objects it generates in sections like data and bss. Sometimes, however, programmer needs
           additional sections, or certain particular variables to appear in special sections, for example to map to special hardware. The section attribute
           specifies that a variable (or function) lives in a particular section.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 */
 
 #include <stdio.h>

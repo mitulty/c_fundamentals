@@ -4,7 +4,22 @@
  */
 /*
 - Function pointers are a pointer that points to a memory region which has
-codes. They point to instructions.
+code. They point to instructions.
+- There are two ways to define a function pointer:
+  1. Using typedef: typedef void (*funcptr)(int);
+     This defines a datatype funcptr which is function pointer. This type then can
+     be used to create different variables and assign those variables the value.
+  2. Using direct declaration: void (*func_ptr)();
+     This defines a variable func_ptr which is a function pointer.
+- Typedef example:
+                        typedef void (*funcptr)(int);
+                        funcptr pf; // This defines a variable pf of type funcptr
+                        pf = &function_4; // Assigning the address of function_4 to pf
+                        pf(10);
+- Direct declaration example:
+                        void (*func_ptr)();
+                        func_ptr = function_1;
+                        func_ptr();
 */
 #include <stdint.h>
 #include <stdio.h>

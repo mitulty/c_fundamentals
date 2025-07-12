@@ -9,11 +9,11 @@
 
 #define TABLE_SIZE 15
 #define PRIME_NUM 13
-typedef struct Node
+typedef struct Node_t
 {
     int index;
     char *name;
-    struct Node *next;
+    struct Node_t *next;
 } Node;
 
 int hash_function(int value)
@@ -93,8 +93,7 @@ int main(int argc, char const *argv[])
 {
     // Both the below declarations work.
     // Node hash_table[TABLE_SIZE]; // static allocation on stack
-    Node *hash_table =
-        (Node *)malloc(sizeof(Node) * TABLE_SIZE); // dynamic allocation on heap
+    Node *hash_table = (Node *)malloc(sizeof(Node) * TABLE_SIZE); // dynamic allocation on heap
     hash_table_init(hash_table);
     fill_hash_table(34, "John", hash_table);
     fill_hash_table(367, "Liam", hash_table);

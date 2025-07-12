@@ -35,10 +35,15 @@ int main(int argc, char const *argv[])
         }
         printf("\n");
     }
-    printf("      arr = %p\n", arr);
-    printf("  arr + 1 = %p\n", arr + 1);
-    printf("  arr + 2 = %p\n", arr + 2);
-    printf("  arr + 3 = %p\n", arr + 3);
+    printf("         arr = %p\n", arr);
+    printf("     arr + 1 = %p\n", arr + 1);
+    printf("     arr + 2 = %p\n", arr + 2);
+    printf("     arr + 3 = %p\n", arr + 3);
+    printf("        *arr = %p\n", *arr);
+    printf("  *(arr + 1) = %p\n", *(arr + 1));
+    printf("  *(arr + 2) = %p\n", *(arr + 2));
+    printf("  *(arr + 3) = %p\n", *(arr + 3));
+
     printf("*(*(arr)) = %d\n", *(*(arr)));
     for (int i = 0; i < 5; i++)
         for (int j = 0; j < 4; j++)

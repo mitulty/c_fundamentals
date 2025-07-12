@@ -13,6 +13,12 @@ int s = 0;
 int s = 1;
 #endif
 
+#if defined(HDR)
+#define VAL1 97
+#else
+#define VAL1 65
+#endif
+
 #ifndef HDR
 int t = 0;
 #else

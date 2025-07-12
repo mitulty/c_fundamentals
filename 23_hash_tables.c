@@ -53,14 +53,14 @@ average cases it is constant. In the worst case, it is linear. Space Complexity
 
 #define TABLE_SIZE 20000
 
-typedef struct entry_t
+typedef struct entry
 {
     char *key;
     char *value;
     struct entry_t *next;
 } entry_t;
 
-typedef struct
+typedef struct hash_table
 {
     entry_t **entries;
 } ht_t;

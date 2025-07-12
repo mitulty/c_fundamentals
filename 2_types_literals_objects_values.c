@@ -33,7 +33,7 @@ Structure, Union, Enumeration and Typedef.
 - Printable characters are always positive.
 - The long, short, signed and unsigned are type modifiers that can be used
 with some primitive data types to change the size or length of the datatype.
-- The qualifiers singed or unsigned may be applied to char or any integer.
+- The qualifiers signed or unsigned may be applied to char or any integer.
 - The size of the data types in C is dependent on the size of the architecture,
 so the universal size of the data types can not be defined. For that, the C
 language provides the sizeof() operator to check the size of the data types.
